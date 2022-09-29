@@ -867,8 +867,8 @@ a:focus {
 }
 
 .review .review-img img {
-    width: 80px; 
-    height: 80px; 
+    width: 260px;
+    height: 260px;
     object-fit: cover;
     margin-right: 15px;
 }
