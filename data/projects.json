@@ -1,0 +1,45 @@
+[
+  {
+    "title": "119 Intelligent Emergency Call Reception — Speech Recognition Data Construction",
+    "period": "2023.09 – 2024.09",
+    "bullets": [
+      "Built the data pre-processing and analytics pipeline for speech recognition",
+      "Modeled dispatch decision-making as a decision aid for guard officers"
+    ],
+    "stack": ["Python", "SQL"],
+    "links": []
+  },
+  {
+    "title": "Emergency and Critical Patient Classification Using EMR Data",
+    "period": "2023.04 – 2024.09",
+    "bullets": [
+      "Designed a model that classifies emergency and critical patients from emergency-department EMR data",
+      "Pre-trained a language model on clinical notes collected from real hospitals",
+      "Combined a tabular encoder and a text encoder at the embedding level, outperforming existing models"
+    ],
+    "stack": ["Python", "PyTorch"],
+    "links": []
+  },
+  {
+    "title": "Optical Character Recognition (OCR) Model Improvements",
+    "period": "2022.09 – 2023.02",
+    "bullets": [
+      "AI competition organized by the Software-Oriented University program",
+      "Improved a Pororo baseline with data augmentation and a Mix-Style module",
+      "Team ranked at the top of the leaderboard and won an Encouragement Award"
+    ],
+    "stack": ["Python", "PyTorch"],
+    "links": [{ "label": "Presentation", "url": "https://drive.google.com/file/d/1yZOpUA4fP_jqZHF3UOu5ALppGzcdp_7s/view?usp=sharing" }]
+  },
+  {
+    "title": "Research on Meta-Learning Improvement",
+    "period": "2022.02 – 2022.12",
+    "bullets": [
+      "Studied and implemented meta-learning methods under a professor's guidance",
+      "Explored improvements to Model-Agnostic Meta-Learning (MAML)",
+      "Applied MAML to NLP by combining it with pruning and knowledge distillation"
+    ],
+    "stack": ["Python", "PyTorch"],
+    "links": [{ "label": "GitHub", "url": "https://github.com/JoSangYeon/UROP_Project-MAML" }]
+  }
+]

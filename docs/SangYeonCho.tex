@@ -1,0 +1,657 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage[explicit]{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={SangYeon Cho's CV},
+    pdfauthor={SangYeon Cho},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{kotex}
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage[default, type1]{sourcesanspro} 
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small SangYeon Cho - Page \thepage{} of \pageref*{LastPage}}
+}{}{} % replace number by desired string
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{
+    % avoid page braking right after the section title
+    \needspace{4\baselineskip}
+    % make the font size of the section title large and color it with the primary color
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    % print bold title, give 0.15 cm space and draw a line of 0.8 pt thickness
+    % from the end of the title to the end of the body
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[] % section title formatting
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+% \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 3.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{1 cm, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \begin{header}
+        \fontsize{30 pt}{30 pt}
+        \textbf{SangYeon Cho}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\footnotesize\faPhone*}\hspace*{0.13cm}+82 10 4618 8508}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:whtkddus98@gmail.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}whtkddus98@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        % \mbox{\hrefWithoutArrow{https://sangyeon-cho.notion.site/}{{\footnotesize\faLink}\hspace*{0.13cm}Website}}%
+        \mbox{\hrefWithoutArrow{https://josangyeon.github.io/}{{\footnotesize\faLink}\hspace*{0.13cm}Website}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/JoSangYeon}{{\footnotesize\faGithub}\hspace*{0.13cm}Github}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://scholar.google.co.kr/citations?user=1mdC49cAAAAJ\&hl=ko}{{\footnotesize\faGraduationCap}\hspace*{0.13cm}Google Scholar}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{{\footnotesize\faIdCard*}\hspace*{0.13cm}Ph.D. Student @ Department of AI, Chung-Ang University, Seoul 06964, Republic of Korea}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section{Welcome!}
+
+        \begin{onecolentry}
+            \textbf{"Let's do my best rather than be the best."}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            Hello, I'm Sangyeon Cho. I am a Ph.D. student at Chung-Ang University, advised by Prof. Junyeong Kim at the IMR Lab, and an AI Researcher at the Korean Surgical Researcher Foundation. My research is on multi-modal learning and medical AI --- how to fuse modalities beyond the image--text pair, and how to carry those representations into clinical data, where labels are scarce and the domain gap is wide.
+        \end{onecolentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Research Interests}
+
+    \begin{onecolentry}
+        \begin{highlightsforbulletentries}
+
+        \item Multi-modal Learning
+
+        \item Medical AI
+
+        \end{highlightsforbulletentries}
+    \end{onecolentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Education}
+
+        \begin{threecolentry}{\textbf{PhD}}{
+            2026.03 – Present
+        }
+            \textbf{Chung-Ang Univ}, AI Engineering
+            \begin{highlights}
+                \item Advisor: Prof. Junyeong Kim(\href{https://sites.google.com/view/imr-lab}{Labs})
+            \end{highlights}
+        \end{threecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{threecolentry}{\textbf{MS}}{
+            2023.03 – 2025.02
+        }
+            \textbf{Chung-Ang Univ}, AI Engineering
+            \begin{highlights}
+                \item GPA: 4.34/4.5 (\href{https://josangyeon.github.io/data/Transcripts(MS).pdf}{Transcripts})
+                \item Coursework: Multi-modal Learning, Knowledge Distillation
+                \item Advisor: Prof. Junyeong Kim(\href{https://sites.google.com/view/imr-lab}{Labs})
+                \item \href{https://josangyeon.github.io/data/Graduate_thesis.pdf}{Graduation Thesis}
+            \end{highlights}
+        \end{threecolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{threecolentry}{\textbf{BS}}{
+            2017.03 – 2023.02
+        }
+            \textbf{Kookmin Univ}, Software Engineering
+            \begin{highlights}
+                \item GPA: 4.09/4.5 (\href{https://josangyeon.github.io/data/Transcripts(BS).pdf}{Transcripts})
+                \item Coursework: Algorithms, Data Structure, Artificial Intelligence
+                \item \href{https://kookmin-sw.github.io/capstone-2022-12/}{Graduation Work}
+            \end{highlights}
+        \end{threecolentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Publications}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2026.10
+            }
+                \textbf{VocMoE: Vocabulary-Guided Mixture-of-Experts for Korean Medical Language Models}
+                \vspace{0.05 cm}
+
+                \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Jaeho Han}, \mbox{Mingyu Jeon}, \mbox{Junyeong Kim*}
+                % \vspace{0.10 cm}
+
+                Empirical Methods in Natural Language Processing(EMNLP) Findings, 2026
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2026.09
+            }
+                \textbf{VividAC: Visually Informed and Visually Interactive Audio Captioning for Enhancing Audio-Visual Question Answering}
+                \vspace{0.05 cm}
+
+                \mbox{Mingi Kim}, \mbox{Jaehoon Go}, \mbox{Jinkwon Hwang}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Sunjae Yoon}, \mbox{Junyeong Kim*}
+                % \vspace{0.10 cm}
+
+                Interspeech (Oral), 2026
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2026.07
+            }
+                \textbf{Knowledge Beyond Language: Bridging the Gap in Multilingual Machine Unlearning Evaluation}
+                \vspace{0.05 cm}
+
+                \mbox{Kyomin Hwang}, \mbox{Hyeonjin Kim}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Nojun Kwak*}
+                % \vspace{0.10 cm}
+
+                \href{https://aclanthology.org/2026.acl-long.1105/}{Association for Computational Linguistics(ACL), 2026}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2026.03
+            }
+                \textbf{Deep Learning-Based Natural Language Processing for Critical Care Identification in Pediatric Emergency Department}
+                \vspace{0.05 cm}
+
+                \mbox{Jiyoung Agatha Kim}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Minyoung Hwang}, \mbox{Dongjoon Lee}, \mbox{Jangyeong Jang}, \mbox{Rhoan Lee}, \mbox{Changhee Lee}, \mbox{Junyeong Kim}, \mbox{Woori Bae*}
+                % \vspace{0.10 cm}
+
+                % \href{https://aclanthology.org/2025.emnlp-main.715/}{Empirical Methods in Natural Language Processing(EMNLP), 2025}
+                \href{https://pubmed.ncbi.nlm.nih.gov/42298409/}{BMC Emergency Medicine, 2026}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2025.11
+            }
+                \textbf{Learning to See through Sound: From VggCaps to Multi2Cap for Richer Automated Audio Captioning}
+                \vspace{0.05 cm}
+
+                \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Mingi Kim}, \mbox{Jinkwon Hwang}, \mbox{Jaehoon Go}, \mbox{Minuk Ma}, \mbox{Sunjae Yoon}, \mbox{Junyeong Kim*}
+                % \vspace{0.10 cm}
+
+                \href{https://aclanthology.org/2025.emnlp-main.715/}{Empirical Methods in Natural Language Processing(EMNLP), 2025}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2025.05
+            }
+                \textbf{Synergy-CLIP: Extending CLIP with Multi-modal Integration for Robust Representation Learning}
+                \vspace{0.05 cm}
+
+                \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Jangyeong Jeon}, \mbox{Mingi Kim}, \mbox{Junyeong Kim*}
+                \vspace{0.10 cm}
+
+                \href{https://ieeexplore.ieee.org/document/10962132}{IEEE ACCESS, Volumn 13, 2025}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2025.02
+            }
+                \textbf{Improving Multimodal Data Quality with Unified Filtering Score (UF-Score)}
+                \vspace{0.05 cm}
+
+                \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Mingi Kim}, \mbox{Hwang JinKwon}, \mbox{Jaehoon Go}, \mbox{Junyeong Kim*}
+                \vspace{0.10 cm}
+
+                \href{https://openreview.net/forum?id=FegWlUuC2S}{Association for the Advancement of Artificial Intelligence (AAAI) GoodData, 2025}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2024.12
+            }
+                \textbf{ConCSE: Unified Contrastive Learning and Augmentation for Code-Switched Embeddings}
+                % \vspace{0.05 cm}
+
+                \mbox{Jangyeong Jeon}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Minuk Ma}, \mbox{Junyeong Kim*}
+                \vspace{0.10 cm}
+                
+                \href{https://arxiv.org/abs/2409.00120}{IEEE International Conference on Pattern Recognition (ICPR)}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2024.09
+            }
+                \textbf{BioBridge: Unified Bio-Embedding with Bridging Modality in Code-Switched EMR}
+                \vspace{0.05 cm}
+
+                \mbox{Jangyeong Jeon}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Dongjoon Lee}, \mbox{Changhee Lee}, \mbox{Junyeong Kim*}
+                \vspace{0.10 cm}
+                
+                \href{https://ieeexplore.ieee.org/document/10693433}{IEEE ACCESS, Volumn 12, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2024.08
+            }
+                \textbf{DSG-KD: Knowledge Distillation from Domain-Specific to General Language Models}
+                \vspace{0.05 cm}
+
+                \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Jangyeong Jeon}, \mbox{Dongjoon Lee}, \mbox{Changhee Lee}, \mbox{Junyeong Kim*}
+                \vspace{0.10 cm}
+                
+                \href{https://ieeexplore.ieee.org/document/10677014}{IEEE ACCESS, Volumn 12, 2024}
+            \end{twocolentry}
+        \end{samepage}
+
+        \vspace{0.25 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                2024.06
+            }
+                \textbf{A Pediatric Emergency Prediction Model Using Natural Language Processing in the Pediatric Emergency Department}
+                \vspace{0.05 cm}
+
+                \mbox{Arum Choi}, \mbox{Chohee Kim}, \mbox{Jisu Ryoo}, \mbox{Jangyeong Jeon}, \mbox{\textbf{\textit{Sangyeon Cho}}}, \mbox{Dongjoon Lee}, \mbox{Junyeong Kim}, \mbox{Changhee Lee*}, \mbox{Woori Bae*}
+                \vspace{0.10 cm}
+    
+                \href{https://www.nature.com/articles/s41598-025-87161-x}{Nature Scientific Reports, 2024}
+                % \href{}{IEEE ACCESS, 2024}
+            \end{twocolentry}
+        \end{samepage}
+    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Experience}
+
+        \begin{twocolentry}{
+            Seoul, Korea
+
+        2025.02 – Currently
+        }
+            \textbf{Korean Surgical Researcher Foundation}, AI Researcher
+            \begin{highlights}
+                \item K-QIPS Research Analysis
+                \item Korean-style Medical Large Language Model
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.25 cm}
+
+        \begin{twocolentry}{
+            Seoul, Korea
+
+        2022.06 – 2022.09
+        }
+            \textbf{Lablup Inc.}, AI Research Assistants
+            \begin{highlights}
+                \item Contribute to the research team
+                \item Developed ground truth data pre-processing module
+                \item Predictive modeling of respiratory infectious disease transmission risk based on ground truth data of droplet spread
+                \item Data augmentation modeling using GAN
+                \item \href{https://drive.google.com/file/d/183ErSbnnBMEYU2a5g8DZwrIyY-kpoGwx/view}{Seminar LINK}
+            \end{highlights}
+        \end{twocolentry}
+
+
+        % \vspace{0.2 cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Projects}
+
+        \begin{twocolentry}{
+            2023.09 - 2024.09
+        }
+            \textbf{119 Intelligent report reception voice recognition data construction}
+            \begin{highlights}
+                \item building data pre-processing and analytics pipeline for speech recognition
+                \item modeling dispatch decision-making for decision aids for guard officers
+                \item Tools Used: Pyhon, SQL
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2023.04 - 2024.09
+        }
+            \textbf{Emergency and Critical Patient Classification Using EMR Data}
+            \begin{highlights}
+                \item Designed a model to classify emergency and critical patients using emergency department EMR data.
+                \item Pre-trained the language model using clinical notes collected from real hospitals.
+                \item we additionally utilize clinical note (text) information to utilize the most potential information.
+                \item By combining tabular encoder and text encoder at the embedding level, we achieved better performance than existing models.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2022.09 - 2023.02
+        }
+            \textbf{Optical Character Recognition (OCR) model improvements}
+            \begin{highlights}
+                \item AI Competition Organized by Software Center University
+                \item Using Pororo as a baseline, we improved it by utilizing data augmentation and adding the Mix-Style module.
+                \item As a result, the team ranked at the top of the leaderboard and won an honorable mention.
+                \item \href{https://drive.google.com/file/d/1yZOpUA4fP_jqZHF3UOu5ALppGzcdp_7s/view?usp=sharing}{Presentation LINK}
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2022.03 - 2022.06
+        }
+            \textbf{AI speakers for seniors living alone}
+            \begin{highlights}
+                \item Designing an AI speaker that analyzes the emotions of seniors living alone and alerts their caregivers
+                \item Responsible for designing/training deep learning models
+                \item We used two models: Sentiment Classification Model and Sentiment Conversation Model.
+                \item \href{https://kookmin-sw.github.io/capstone-2022-12/}{Github LINK}
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2022.02 - 2022.12
+        }
+            \textbf{Research on Meta-Learning Improvement}
+            \begin{highlights}
+                \item Studying/implementing meta-learning in general
+                \item Considered how to improve Model-Agnostic Meta-Learning (MAML) under the guidance of a professor
+                \item Conducted research on applying MAML to natural language processing by combining it with pruning and knowledge distillation
+                \item \href{https://github.com/JoSangYeon/UROP_Project-MAML}{Github LINK}
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2020.10 - 2022.04
+        }
+            \textbf{Research on Improving Information Security Behavior}
+            \begin{highlights}
+                \item Developing a framework to guide better information security compliance behavior in the enterprise
+                \item Teach principal investigators programming fundamentals
+                \item Teach principal investigators on machine learning and deep learning concepts
+                \item \href{https://github.com/JoSangYeon/information-security}{Github LINK}
+            \end{highlights}
+        \end{twocolentry}
+
+        % \vspace{0.2 cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Awards \& Honors}
+
+        \textbf{Awards}
+        \begin{onecolentry}
+            \begin{highlights}
+                \begin{twocolentry}{
+                    2024.06
+                }
+                IEIE Summer Conference, Encouragement Award
+                \end{twocolentry}
+            
+                \begin{twocolentry}{
+                    2022.09
+                }
+                SW-focused University Collaborative AI Competition, Encouragement Award
+                \end{twocolentry}
+            \end{highlights}
+        \end{onecolentry}
+            
+        \vspace{0.2 cm}
+        
+        \textbf{Honors}
+        \begin{onecolentry}
+            \begin{highlights}
+                \begin{twocolentry}{
+                    2022.09
+                }
+                Merit Scholarships \end{twocolentry}
+
+                \begin{twocolentry}{
+                    2022.03
+                }
+                Merit Scholarships \end{twocolentry}
+
+                \begin{twocolentry}{
+                    2022.02
+                }
+                S\&T Foundation Scholarships \end{twocolentry}
+            \end{highlights}
+        \end{onecolentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Technologies}
+
+        \begin{onecolentry}
+            \textbf{Languages:} Python, C/C++, C\#, Java, SQL, Scala
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Frameworks:} PyTorch, Hugging Face, TensorFlow
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{onecolentry}
+            \textbf{Credentials:} ADsP
+        \end{onecolentry}
+
+        % \vspace{0.2 cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

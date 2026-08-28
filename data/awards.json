@@ -1,0 +1,11 @@
+{
+  "awards": [
+    { "date": "2024.06", "title": "Encouragement Award", "detail": "IEIE Summer Conference" },
+    { "date": "2022.09", "title": "Encouragement Award", "detail": "SW-Oriented University Collaborative AI Competition" }
+  ],
+  "honors": [
+    { "date": "2022.09", "title": "Merit Scholarship", "detail": "Kookmin University" },
+    { "date": "2022.03", "title": "Merit Scholarship", "detail": "Kookmin University" },
+    { "date": "2022.02", "title": "S&T Foundation Scholarship", "detail": "Unhae Scholarship Foundation" }
+  ]
+}

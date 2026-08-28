@@ -1,0 +1,25 @@
+[
+  {
+    "role": "AI Researcher",
+    "org": "Korean Surgical Researcher Foundation",
+    "location": "Seoul, Korea",
+    "period": "2025.02 – Present",
+    "bullets": [
+      "K-QIPS research analysis",
+      "Development of a Korean-style medical large language model"
+    ],
+    "links": []
+  },
+  {
+    "role": "AI Research Assistant",
+    "org": "Lablup Inc.",
+    "location": "Seoul, Korea",
+    "period": "2022.06 – 2022.09",
+    "bullets": [
+      "Developed a ground-truth data pre-processing module for the research team",
+      "Predictive modeling of respiratory infectious disease transmission risk from droplet-spread ground-truth data",
+      "Data augmentation modeling using GANs"
+    ],
+    "links": [{ "label": "Seminar", "url": "https://drive.google.com/file/d/183ErSbnnBMEYU2a5g8DZwrIyY-kpoGwx/view" }]
+  }
+]

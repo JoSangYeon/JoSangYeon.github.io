@@ -1,0 +1,174 @@
+[
+  {
+    "id": "C6",
+    "title": "VocMoE: Vocabulary-Guided Mixture-of-Experts for Korean Medical Language Models",
+    "authors": "Sangyeon Cho, Jaeho Han, Mingyu Jeon, Junyeong Kim*",
+    "venue": "EMNLP Findings",
+    "year": 2026,
+    "tags": [
+      "medical",
+      "nlp"
+    ],
+    "links": []
+  },
+  {
+    "id": "C5",
+    "title": "VividAC: Visually Informed and Visually Interactive Audio Captioning for Enhancing Audio-Visual Question Answering",
+    "authors": "Mingi Kim, Jaehoon Go, Jinkwon Hwang, Sangyeon Cho, Sunjae Yoon, Junyeong Kim*",
+    "venue": "Interspeech (Oral)",
+    "year": 2026,
+    "tags": [
+      "multimodal",
+      "audio"
+    ],
+    "links": []
+  },
+  {
+    "id": "C4",
+    "title": "Knowledge Beyond Language: Bridging the Gap in Multilingual Machine Unlearning Evaluation",
+    "authors": "Kyomin Hwang, Hyeonjin Kim, Sangyeon Cho, Nojun Kwak*",
+    "venue": "ACL",
+    "year": 2026,
+    "tags": [
+      "nlp"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://aclanthology.org/2026.acl-long.1105/"
+      }
+    ]
+  },
+  {
+    "id": "J5",
+    "title": "Deep Learning-Based Natural Language Processing for Critical Care Identification in Pediatric Emergency Department",
+    "authors": "Jiyoung Agatha Kim, Sangyeon Cho, Minyoung Hwang, Dongjoon Lee, Jangyeong Jang, Rhoan Lee, Changhee Lee, Junyeong Kim, Woori Bae*",
+    "venue": "BMC Emergency Medicine",
+    "year": 2026,
+    "tags": [
+      "medical",
+      "nlp"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42298409/"
+      }
+    ]
+  },
+  {
+    "id": "C3",
+    "title": "Learning to See through Sound: From VggCaps to Multi2Cap for Richer Automated Audio Captioning",
+    "authors": "Sangyeon Cho, Mingi Kim, Jinkwon Hwang, Jaehoon Go, Minuk Ma, Sunjae Yoon, Junyeong Kim*",
+    "venue": "EMNLP",
+    "year": 2025,
+    "tags": [
+      "multimodal"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://aclanthology.org/2025.emnlp-main.715/"
+      }
+    ]
+  },
+  {
+    "id": "J4",
+    "title": "Synergy-CLIP: Extending CLIP with Multi-modal Integration for Robust Representation Learning",
+    "authors": "Sangyeon Cho, Jangyeong Jeon, Mingi Kim, Junyeong Kim*",
+    "venue": "IEEE Access, Vol. 13",
+    "year": 2025,
+    "tags": [
+      "multimodal"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://ieeexplore.ieee.org/document/10962132"
+      }
+    ]
+  },
+  {
+    "id": "C2",
+    "title": "Improving Multimodal Data Quality with Unified Filtering Score (UF-Score)",
+    "authors": "Sangyeon Cho, Mingi Kim, Jinkwon Hwang, Jaehoon Go, Junyeong Kim*",
+    "venue": "AAAI Workshop on Good Data",
+    "year": 2025,
+    "tags": [
+      "multimodal"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://openreview.net/forum?id=FegWlUuC2S"
+      }
+    ]
+  },
+  {
+    "id": "C1",
+    "title": "ConCSE: Unified Contrastive Learning and Augmentation for Code-Switched Embeddings",
+    "authors": "Jangyeong Jeon, Sangyeon Cho, Minuk Ma, Junyeong Kim*",
+    "venue": "ICPR",
+    "year": 2024,
+    "tags": [
+      "nlp"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2409.00120"
+      }
+    ]
+  },
+  {
+    "id": "J3",
+    "title": "BioBridge: Unified Bio-Embedding with Bridging Modality in Code-Switched EMR",
+    "authors": "Jangyeong Jeon, Sangyeon Cho, Dongjoon Lee, Changhee Lee, Junyeong Kim*",
+    "venue": "IEEE Access, Vol. 12",
+    "year": 2024,
+    "tags": [
+      "medical",
+      "multimodal"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://ieeexplore.ieee.org/document/10693433"
+      }
+    ]
+  },
+  {
+    "id": "J2",
+    "title": "DSG-KD: Knowledge Distillation from Domain-Specific to General Language Models",
+    "authors": "Sangyeon Cho, Jangyeong Jeon, Dongjoon Lee, Changhee Lee, Junyeong Kim*",
+    "venue": "IEEE Access, Vol. 12",
+    "year": 2024,
+    "tags": [
+      "kd",
+      "medical"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://ieeexplore.ieee.org/document/10677014"
+      }
+    ]
+  },
+  {
+    "id": "J1",
+    "title": "A Pediatric Emergency Prediction Model Using Natural Language Processing in the Pediatric Emergency Department",
+    "authors": "Arum Choi, Chohee Kim, Jisu Ryoo, Jangyeong Jeon, Sangyeon Cho, Dongjoon Lee, Junyeong Kim, Changhee Lee*, Woori Bae*",
+    "venue": "Nature Scientific Reports",
+    "year": 2024,
+    "tags": [
+      "medical",
+      "nlp"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://www.nature.com/articles/s41598-025-87161-x"
+      }
+    ]
+  }
+]
