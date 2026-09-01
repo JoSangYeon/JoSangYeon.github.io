@@ -9,7 +9,12 @@
       "medical",
       "nlp"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "HuggingFace",
+        "url": "https://huggingface.co/collections/MediKo/mediko"
+      }
+    ]
   },
   {
     "id": "C5",
