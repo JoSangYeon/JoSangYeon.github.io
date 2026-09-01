@@ -40,7 +40,7 @@
     ]
   },
   {
-    "id": "J5",
+    "id": "J6",
     "title": "Deep Learning-Based Natural Language Processing for Critical Care Identification in Pediatric Emergency Department",
     "authors": "Jiyoung Agatha Kim, Sangyeon Cho, Minyoung Hwang, Dongjoon Lee, Jangyeong Jang, Rhoan Lee, Changhee Lee, Junyeong Kim, Woori Bae*",
     "venue": "BMC Emergency Medicine",
@@ -53,6 +53,23 @@
       {
         "label": "Paper",
         "url": "https://pubmed.ncbi.nlm.nih.gov/42298409/"
+      }
+    ]
+  },
+  {
+    "id": "J5",
+    "title": "Deep Language Model-Based Early Recognition of Out-of-Hospital Cardiac Arrest from Real-Time Emergency Calls",
+    "authors": "Hong-Jae Choi, Minyoung Hwang, Sangyeon Cho, Hyunsoo Kim, Junyeong Kim, Woori Bae, Changhee Lee*",
+    "venue": "Nature npj Digital Medicine, Vol. 9",
+    "year": 2026,
+    "tags": [
+      "medical",
+      "nlp"
+    ],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://www.nature.com/articles/s41746-026-02498-5"
       }
     ]
   },
